@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<form action="" method="post">
+    {% csrf_token %}
+
+
+    <p><label class="form-label" for="{{ form_test_title.title_for_label }}">{{ form_test_title.title.label }}</label>{{ form_test_title.title }}</p>
+    <div class="form-error">{{ form_test_title.non_field_errors }}</div>
+
+    {{ formset.management_form }}
+    {% for f in formset %}
+        {{ f.as_p }}
+    {% endfor %}
+
+    <p><button type="submit">Редактировать</button></p>
+
+</form>
+{% endblock %}

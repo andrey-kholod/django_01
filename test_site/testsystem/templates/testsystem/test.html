@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ title }}</h1>
+
+    <ul>
+        {% for q in question %}
+        <li>
+            <h2>Вопрос</h2>
+
+            <p>{{ q.question }}</p>
+
+            <li>
+                {% for an in answer %}
+                    {% if an.question_id == q.id %}
+                    <p>{{ an.answer }}</p>
+                    {% endif %}
+                {% endfor %}
+            </li>
+            {% if not forloop.last %}
+            <hr>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

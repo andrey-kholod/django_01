@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    </ul>
+    <h1>Главная страница</h1>
+    <ul>
+        {% for t in tests %}
+        <li>
+            <h2>{{ t.title }}</h2>
+            <p><a href="{{ t.get_absolute_url }}">Решить тест</a></p>
+
+            <p><a href="{{ t.get_absolute_url_edit }}">Редактировать тест</a></p>
+
+            <p><a href="{{ t.get_absolute_url_deletetest }}">Удалить тест</a></p>
+
+            {% if not forloop.last %}
+            <hr>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
